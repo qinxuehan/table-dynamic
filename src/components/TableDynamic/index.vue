@@ -1,5 +1,6 @@
 <template>
   <div class="box">
+    <el-button @click="tab" icon="el-icon-arrow-right">树形表格</el-button>
     <div class="add-btn">
       <i class="el-icon-circle-plus"></i>
       <span @click='handleInsert'>插入行</span>
@@ -68,6 +69,10 @@ export default {
   //   theadList: Object
   // },
   methods: {
+    // 切换至树形表格
+    tab () {
+      this.$router.push({path: '/treeTable'})
+    },
     // 分页大小改动
     handleSizeChange (val) {
       this.pageParams.pageSize = val
@@ -119,6 +124,7 @@ export default {
       handler (val) {
         this.pageParams.total = this.formArray.length
         // 打印出表单变化后的值
+        // console.log('动态表格的值', val);
         this.$emit('input', val)
       },
       deep: true
